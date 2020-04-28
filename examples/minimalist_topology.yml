@@ -10,18 +10,18 @@ iconsDefaults: &iconsDefaults
   iconFamily: cisco
   fill: none
 icons:
-  iosv-1: { <<: *iconsDefaults, gns3_template: "Cisco IOSv L3", x: 2, y: 8 }
-  iosv-2: { <<: *iconsDefaults, gns3_template: "Cisco IOSv L3", x: 1, y: 7 }
-  iosv-3: { <<: *iconsDefaults, gns3_template: "Cisco IOSv L3", x: 3, y: 7 }
-  veos-2: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 1, y: 5}
-  veos-3: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 3, y: 5}
-  veos-1: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 2, y: 4}
+  iosv-1: { <<: *iconsDefaults, gns3_template: "IOU-15.4", x: 2, y: 8 }
+  iosv-2: { <<: *iconsDefaults, gns3_template: "IOU-15.4", x: 1, y: 7 }
+  iosv-3: { <<: *iconsDefaults, gns3_template: "IOU-15.4", x: 3, y: 7 }
+  veos-2: { <<: *iconsDefaults, gns3_template: "vEOS-4.21.5F", x: 1, y: 5 }
+  veos-3: { <<: *iconsDefaults, gns3_template: "vEOS-4.21.5F", x: 3, y: 5 }
+  veos-1: { <<: *iconsDefaults, gns3_template: "vEOS-4.21.5F", x: 2, y: 4 }
 connections:
-  - { endpoints: [iosv-1:Gi0/1, iosv-3:Gi0/2] }
-  - { endpoints: [iosv-1:Gi0/2, iosv-2:Gi0/2] }
-  - { endpoints: [iosv-2:Gi0/3, iosv-3:Gi0/3] }
-  - { endpoints: [iosv-2:Gi0/4, veos-2:Ethernet1] }
-  - { endpoints: [iosv-3:Gi0/4, veos-3:Ethernet1] }
+  - { endpoints: [iosv-1:Ethernet0/1, iosv-3:Ethernet0/2] }
+  - { endpoints: [iosv-1:Ethernet0/2, iosv-2:Ethernet0/2] }
+  - { endpoints: [iosv-2:Ethernet0/3, iosv-3:Ethernet0/3] }
+  - { endpoints: [iosv-2:Ethernet1/0, veos-2:Ethernet1] }
+  - { endpoints: [iosv-3:Ethernet1/0, veos-3:Ethernet1] }
   - { endpoints: [veos-3:Ethernet7, veos-2:Ethernet7] }
   - { endpoints: [veos-1:Ethernet2, veos-2:Ethernet2] }
   - { endpoints: [veos-1:Ethernet3, veos-3:Ethernet3] }
