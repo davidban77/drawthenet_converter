@@ -7,6 +7,7 @@ The purpose of this script is to read [drawthe.net](http://go.drawthe.net/) YAML
 - Python 3
 - [gns3fy](https://github.com/davidban77/gns3fy). Can be installed with `pip install gns3fy`.
 - A [drawthe.net](http://go.drawthe.net/) topology file.
+- `tabulate`. To pretty print the summary when topology is created, see `requirements.txt`
 
 ## How it works
 
