@@ -1,0 +1,75 @@
+diagram:
+  fill: "snow"
+  rows: 9
+  columns: 9
+  gridLines: false
+  gridPaddingInner: .25
+  # groupPadding: .75
+  # aspectRatio: "10:4"
+  # iconTextRatio: ".33"
+title:
+  color: black
+  heightPercentage: 6
+  # logoFill: white
+  text: "Simple Demo"
+  subText: "Simple Lab environment."
+  # fill: none
+  stroke: "lightgrey"
+  type: "bar"
+  author: netpanda
+cisco: &cisco
+  stroke: "none"
+  color: "black"
+  iconFill: "darkslategrey"
+  iconStroke: "lightgrey"
+  iconStrokeWidth: .25
+  iconFamily: "cisco"
+  fill: "none"
+  preserveWhite: "true"
+arista: &arista
+  stroke: "none"
+  color: "black"
+  iconFill: "darkslategrey"
+  iconStroke: "lightgrey"
+  iconStrokeWidth: .25
+  iconFamily: "cisco"
+  fill: "none"
+  preserveWhite: "true"
+site_a: &site_a
+  <<: *cisco
+  icon: "router"
+  gns3_template: "Cisco IOSv 15.7(3)M3"
+  iconFill: "#90d2d8"
+  iconStroke: "#395456"
+site_b: &site_b
+  <<: *arista
+  icon: "router"
+  gns3_template: "Arista vEOS 4.23.1F"
+  iconFill: "#b38184"
+  iconStroke: "#473334"
+icons:
+  iosv-1: {<<: *site_a, x: 2, y: 8}
+  iosv-2: {<<: *site_a, x: 1, y: 7}
+  iosv-3: {<<: *site_a, x: 3, y: 7}
+  veos-2: {<<: *site_b, x: 1, y: 5}
+  veos-3: {<<: *site_b, x: 3, y: 5}
+  veos-1: {<<: *site_b, x: 2, y: 4}
+group: &group
+  fill: "none"
+  color: darkslategray
+  stroke: lightgrey
+groups:
+  site_a: { <<: *group, textLocation: bottomRight, name: Site A, members: [iosv-1, iosv-2, iosv-3] }
+  site_b: { <<: *group, textLocation: bottomRight, name: Site B, members: [veos-1, veos-2, veos-3] }
+connectionMainProperties: &connectionMainProperties
+  color: "darkgrey"
+  stroke: "darkslategrey"
+connections:
+  - { <<: *connectionMainProperties, endpoints: [iosv-1:Gi0/1, iosv-3:Gi0/2] }
+  - { <<: *connectionMainProperties, endpoints: [iosv-1:Gi0/2, iosv-2:Gi0/2] }
+  - { <<: *connectionMainProperties, endpoints: [iosv-2:Gi0/3, iosv-3:Gi0/3] }
+  - { <<: *connectionMainProperties, endpoints: [iosv-2:Gi0/4, veos-2:Ethernet1] }
+  - { <<: *connectionMainProperties, endpoints: [iosv-3:Gi0/4, veos-3:Ethernet1] }
+  - { <<: *connectionMainProperties, endpoints: [veos-3:Ethernet7, veos-2:Ethernet7] }
+  - { <<: *connectionMainProperties, endpoints: [veos-1:Ethernet2, veos-2:Ethernet2] }
+  - { <<: *connectionMainProperties, endpoints: [veos-1:Ethernet3, veos-3:Ethernet3] }
