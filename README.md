@@ -105,3 +105,4 @@ Besides the mandatory fields explained in the section above, there are some cons
 
 - The `connections`, specifically the `endpoints` defined need to be devices and ports, it cannot be **groups**.
 - The feature of drawthe.net to use the `+` or `-` values on the coordinates to add or substract from the previous value (for example `x: "+1"`) is **NOT** possible to use. You must specify the values.
+- Create your own topologies in `/topologies/` as this will be ignored by git, keeping your topology files local.
