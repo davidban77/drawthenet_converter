@@ -93,4 +93,4 @@ site/
 dmypy.json
 
 #examples
-examples/*
+topologies/
