@@ -1,6 +1,6 @@
 # Drawthe.net converter
 
-The purpose of this script is to read [drawthe.net](http://go.drawthe.net/) YAML files and recreate a GNS3 topology.
+The purpose of this script is to read [drawthe.net](http://go.drawthe.net/) YAML files and recreate a GNS3 topology, Powered by Gns3fy.
 
 ## Requirements
 
@@ -28,7 +28,7 @@ For example:
 
 ```yaml
 connections:
-    - { endpoints: [router01:Gi0/1, router02:Gi0/1] }
+  - { endpoints: [router01:Gi0/1, router02:Gi0/1] }
 ```
 
 For a minimalistic example of a file lets see `example/minimalist_topology.yml`.
@@ -49,9 +49,9 @@ icons:
   iosv-1: { <<: *iconsDefaults, gns3_template: "Cisco IOSv L3", x: 2, y: 8 }
   iosv-2: { <<: *iconsDefaults, gns3_template: "Cisco IOSv L3", x: 1, y: 7 }
   iosv-3: { <<: *iconsDefaults, gns3_template: "Cisco IOSv L3", x: 3, y: 7 }
-  veos-2: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 1, y: 5}
-  veos-3: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 3, y: 5}
-  veos-1: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 2, y: 4}
+  veos-2: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 1, y: 5 }
+  veos-3: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 3, y: 5 }
+  veos-1: { <<: *iconsDefaults, gns3_template: "Arista vEOS", x: 2, y: 4 }
 connections:
   - { endpoints: [iosv-1:Gi0/1, iosv-3:Gi0/2] }
   - { endpoints: [iosv-1:Gi0/2, iosv-2:Gi0/2] }
@@ -95,9 +95,14 @@ optional arguments:
                         Protocol to use to connect.
 ```
 
+### Final Outcome, the topology in Gns3
+
+![Topology on GNS3](images/minimalistic.png)
+
 ## Considerations
 
 Besides the mandatory fields explained in the section above, there are some considerations and restrictions when using the script:
 
 - The `connections`, specifically the `endpoints` defined need to be devices and ports, it cannot be **groups**.
 - The feature of drawthe.net to use the `+` or `-` values on the coordinates to add or substract from the previous value (for example `x: "+1"`) is **NOT** possible to use. You must specify the values.
+- Create your own topologies in `/topologies/` as this will be ignored by git, keeping your topology files local.

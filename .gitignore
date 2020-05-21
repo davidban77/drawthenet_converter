@@ -91,3 +91,6 @@ site/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+#examples
+topologies/
